@@ -1,0 +1,54 @@
+.logoRE {
+  width: 100px;
+  margin: 10px;
+  
+}
+
+img:hover {
+  transform: scale(1.1);
+}
+
+.nav {
+  background-image: linear-gradient(to top, #a318c565, #ffffff9c, #bf4fdb6b);
+  color: rgb(108, 18, 150);
+  box-shadow: 0px 3px 20px 2px #ffaaff;
+  display: flex;
+  justify-content: space-between;
+  align-content: flex-start;
+}
+
+
+.etiNav{
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  margin: 1rem;
+
+}
+
+.etiNav li{
+  padding-right: .5rem;
+  padding-left: 1rem;
+
+  list-style:none
+}
+
+.etiNav li a:hover{
+  color: #72011d;
+  background-image: linear-gradient(to top, #a318c565, #ffffff9c, #bf4fdb6b);
+  border-radius: 25px;
+  padding: 5px;
+  border: solid .5px #4f006e6b;
+  transform: scale(1.3);
+}
+
+.etiNav li a {
+  color: #53075a;
+  text-decoration: none;
+  list-style: none;
+  
+}
+
+.iconCardWidget {
+  font-size: 30px;
+}
