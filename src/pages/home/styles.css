@@ -1,0 +1,9 @@
+.home {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    font-size: 5rem;
+    justify-content: center;
+    color: blueviolet;
+    align-items: center
+}
