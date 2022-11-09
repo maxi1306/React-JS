@@ -4,7 +4,11 @@
   
 }
 
-img:hover {
+.mainContainer {
+  background-image: url("https://img.freepik.com/vector-gratis/fondo-mariposa-femenina-borde-rosa-ilustracion-animales-vectoriales_53876-144641.jpg?w=1380&t=st=1667966623~exp=1667967223~hmac=90b460499cc07a321699ddb5e256162b8291a69bf9222001bd87acdd130680d2");
+}
+
+.nav img:hover {
   transform: scale(1.1);
 }
 
@@ -51,4 +55,117 @@ img:hover {
 
 .iconCardWidget {
   font-size: 30px;
+}
+
+.container{
+  display: flex;
+  flex-direction: column;
+  width: 25rem;
+  justify-content: center;
+  align-items: center;
+  height: fit-content;
+  margin: 25px;
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  transition: all 200ms ease;
+}
+
+.container:hover {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.buttomDetail {
+  margin: 10px;
+  padding: 5px;
+  background-color: rgb(245, 218, 245);
+  border-radius: 7px;
+  color: #212121;
+}
+
+.buttomDetail :hover{
+  color: white;
+}
+
+.iconInfo{
+  font-size: 17px;
+}
+
+
+.image {
+  width: 400px;
+  height: 300px;
+}
+
+.card-image{
+  padding: 25px;
+}
+
+.title {
+  font-size: 22px;
+  font-weight: bold;
+  color:#212121
+}
+.list-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around
+}
+
+.card-cate {
+  font-size: 24px;
+  font-weight: bold;
+  color: #212121;  
+}
+.card-descr {
+  display: flex;
+  align-items: center;
+  font-size: 20px;
+  color: #212121;
+  font-weight: bold;
+  height: 8rem;
+ 
+}
+
+
+.footerContainer{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+  background-color: #da95df;
+  box-shadow: 0px 3px 20px 5px #f390f3;
+}
+
+.titleFooter{
+  margin: 20px;
+
+}
+.footerIcon{
+  display: flex;
+  font-size: 30px;
+
+
+}
+.instaIcon{
+  padding-right: 20px;
+  color: #d84280;
+
+}
+.whatIcon{
+  padding-right: 20px;
+  color: green;
+
+}
+.faceIcon{
+  padding-right: 20px;
+  color: rgb(33, 33, 252);
+
+}
+
+.footerIcon :hover{
+  color: white;
 }

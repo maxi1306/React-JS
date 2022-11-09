@@ -1,10 +1,12 @@
 import React from "react";
+import ItemListContainer from "../../components/ItemListContainer";
 import './styles.css';
+
 const Catalogo = () => {
     return (
-        <div>
-            <h1>catologo</h1>
-        </div>
+        <>
+        <ItemListContainer/>
+        </>
     )
 }
 

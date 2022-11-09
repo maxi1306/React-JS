@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import Card from "./card";
 
-const ItemDetailContainer = () => {
+const ItemListContainer = () => {
 
-  const [productsDetail, setProductsDetail] = useState([]);
+  const [productsList, setProductsList] = useState([]);
 
   useEffect(() => {
     const ItemContainer = async () => {
@@ -15,7 +17,7 @@ const ItemDetailContainer = () => {
           }
         });
         const dataProducts = await data.json();
-        setProductsDetail(dataProducts);
+        setProductsList(dataProducts);
       } catch (error) {
         console.log(error);
       }
@@ -24,23 +26,23 @@ const ItemDetailContainer = () => {
 
 
   }, []);
-
   return (
-    <div>
-      {productsDetail.length > 0 ? productsDetail.map(product => (
+
+    <div className="list-container">
+      {productsList.length > 0 ? productsList.map(product => (
         <div key={product.id} className='container'>
           <h1 className="title">{product.model}</h1>
-          <div className="card-image">
-            <img className="image" src={product.image} alt="image" />
+          <div className="card-image"> 
+          <img className="image" src={product.image} alt="image" />
           </div>
-          <p className="card-cate">Tecnologia: {product.tecnologia}</p>
-          <p className="card-descr">Price: {product.price}</p>
-          <p className="card-dime">Dimensiones: {product.dimensiones}</p>
+          <button className="buttomDetail">
+          <i class="iconInfo bi bi-info-circle"><Link to={`/detalles/${product.id}`} >Ver Detalles</Link></i>
+          </button>
 
         </div>
-      )) : <p>Product Loading...</p>}
+      )) : <p>Products Loading...</p>}
 
     </div>
   );
 }
-export default ItemDetailContainer;
+export default ItemListContainer;
