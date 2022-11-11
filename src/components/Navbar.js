@@ -1,7 +1,7 @@
 import React from "react";
 import CardWidget from "./CardWidget";
 
-const Navbar = ({logo,  inicio, catalogo, contacto, carrito}) => {
+const Navbar = ({logo,  inicio, catalogo, contacto}) => {
     return (
         
             <nav className="nav">
