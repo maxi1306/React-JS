@@ -1,24 +1,31 @@
-import React from "react";
-import { useState } from "react"
-import {MdRemoveCircleOutline, MdAddCircleOutline} from "react-icons/md";
+import React, { useState } from "react"
+import { useEffect } from "react"
 import './Count.css'
 
-export const Count = () => {
-    const [cant, setCant] = useState(1)
+export const Count = ({initial, stock, onAdd}) => {
+    const [count, setCant] = useState(parseInt(initial))
 
-    const sumarCant = ()=>{
-        setCant(cant + 1)
+    const decrease = ()=>{
+        setCant(count -1);
     } 
-    const reatarCant = ()=>{
-        if(cant < 2 ) return
-        setCant(cant - 1)
-    }   
+    const increase = ()=>{
+        setCant(count + 2) ;
+      
+    }  
+    
+    useEffect (() => {
+        setCant(parseInt(initial));
+    },[initial])
+    
   return (
     <>
             <div className="count">
-                <i  onClick={reatarCant}><MdRemoveCircleOutline/></i>               
-                <p><b>{cant}</b></p>
-                <i onClick={sumarCant}><MdAddCircleOutline /></i> 
+                <button disabled={count <= 1} onClick={decrease}> - </button>
+                <p><b>{count}</b></p>
+                <button disabled={count >= stock} onClick={increase}> + </button>
+                <div>
+                    <button disabled={stock <= 0} onClick={() => onAdd(count)} className="buttomDetail">Agregar al Carrito</button>
+                </div>
             </div>
             
         </>

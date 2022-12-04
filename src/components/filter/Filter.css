@@ -1,0 +1,32 @@
+.filter {
+    display: flex;
+    justify-content: center;
+    background-color: #d967dd54;
+    margin-bottom: 30px;
+}
+
+.filter a {
+    display: flex;
+    padding: 10px;
+    align-items: center;
+    justify-content: center;
+    margin: 10px;
+    border: none;
+    border-radius: 20px;
+    width: 110px;
+    height: 12px;
+    background-color: #ca4ae4;
+    color: #ffffff;
+    font-weight: bold;
+    font-family: serif;
+    transition: all 0.8s ease;
+    font-size: 18px;
+    text-decoration: none;
+}
+
+.filter a:hover{
+    transition: all 0.8s ease;
+    background-color: #fc97fc;
+    color: #6c0386;
+    box-shadow: 1px 1px 6px 1px #161616;
+}

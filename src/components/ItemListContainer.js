@@ -1,26 +1,41 @@
-import ItemList from './ItemList'
 import React, { useEffect, useState } from "react"
+import { getFirestore, collection, getDocs, query, where } from 'firebase/firestore';
+import ItemList from './ItemList'
+import { useNavigate, useParams } from 'react-router-dom';
+import Filter from "./filter/Filter";
 
-const ItemListContainer = () => {
-    const [product, setProduct] = useState([])
+export const ItemListContainer = () => {
+
+    const [data, setData] = useState([]);
+    const navigate = useNavigate();
+    const { categoryId } = useParams();
+
     useEffect(() => {
-        apiStockProduct()
-    }, [])
-
-    const apiStockProduct = async () => {
-        try {
-            const data = await fetch("https://636593c5046eddf1baf001f8.mockapi.io/productos")
-            const dataJson = await data.json()
-            setProduct(dataJson)
-        } catch (error) {
-            console.log(error);
+        const querydb = getFirestore();
+        const queryCollection = collection(querydb, 'products');
+        if (categoryId) {
+            const queryFilter = query(queryCollection, where('category', '==', categoryId))
+            getDocs(queryFilter)
+                .then(res => setData(res.docs.map(products => ({ id: products.id, ...products.data() }))))
+        } else {
+            getDocs(queryCollection)
+                .then(res => setData(res.docs.map(products => ({ id: products.id, ...products.data() }))))
         }
-    }
+       
+    }, [categoryId]);
+
+
+    const handleDetail = (products) => {
+        navigate(`/itemDetalles/${products.id}`);
+      }
 
     return (
-        <>
-            <ItemList item={product}></ItemList>
-        </>
+        <div>
+            <Filter></Filter>
+            <div>
+                <ItemList item={data} goToDetail={handleDetail}></ItemList>
+            </div>
+        </div>
     )
 }
 

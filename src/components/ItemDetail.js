@@ -1,31 +1,47 @@
-import React from "react";
-import { Link, useLocation } from "react-router-dom"
+import React, { useState } from "react";
 import { Count } from "./Count";
+import { Link } from "react-router-dom";
+import { useCartContext } from "../context/CartContext";
 
-const ItemDetail = ({ item }) => {
+export const ItemDetail = ({data}) => {
 
-  const { state } = useLocation();
+  const [goToCart, setGoToCart] = useState(false);
+  const {addProduct} = useCartContext();
 
+  const onAdd = (quantity) => {
+    setGoToCart(true)
+    addProduct(data, quantity)
+  }
+
+  console.log(data);
 
   return (
-    <div className="list-Container" >
-      <div key={state.id} className="containerDetail">
+
+    <section className="list-Container" >
+      <div key={data.id} className="containerDetail">
         <div className="card-image">
-          <img src={state.image} alt="imageProduct" className="image" />
+          <img src={data.image} alt="imageProduct" className="image" />
         </div>
-        <h2 className="card-model">{state.model}</h2>
+        <h2 className="card-model">{data.model}</h2>
         <ul className="card-info">
-          <li className="card-tecno"> Tecnologia: {state.tecnologia}</li>
-          <li className="card-descr"> Dimensiones: {state.dimensiones}</li>
-          <li className="card-price"><b>${state.price}</b></li>
+          <li className="card-tecno"> {data.tecnologia}</li>
+          <li className="card-tecno"> {data.potencia}</li>
+          <li className="card-tecno"> {data.velocidad}</li>
+          <li className="card-descr"> Dimensiones: {data.dimensiones}</li>
+          <li className="card-price"><b>${data.price}</b></li>
         </ul>
         <div className="card-count">
-        <p>Cantidad:</p>
-        <Count /></div>
-        <Link className="buttomDetail" to={"/catalogo"}>AGREGAR AL CARRITO</Link>
-      </div>
 
-    </div>
+          {
+            goToCart
+              ? <div className="containerSeguiComprando" > <Link to='/catalogo' className="seguiCompra">Segui Comprando</Link> <Link to='/cart' className="seguiCompra"><i className="bi bi-cart4"></i> Ir al Carrito</Link> </div>
+              : <Count initial={1} stock={10} onAdd={onAdd} />
+          }
+          
+        </div>
+
+      </div>
+    </section>
   )
 };
 

@@ -1,19 +1,19 @@
 import React from "react";
 import CardWidget from "./CardWidget";
+import { NavLink } from "react-router-dom";
 
-const Navbar = ({logo,  inicio, catalogo, contacto}) => {
+const Navbar = ({logo,  inicio, catalogo}) => {
     return (
         
             <nav className="nav">
                 <img src={logo} alt="logo" href="/" className="logoRE"/>
                 <ul className='etiNav'>
                     
-                    <li><a href="/" className="lnav">{inicio}</a></li>
-                    <li><a href="/catalogo" className="lnav">{catalogo}</a></li>
-                    <li><a href="#" className="lnav">{contacto}</a></li>
-                    <li><a href="#" className="iconCardWidget">
+                    <li><NavLink to="/" className="lnav">{inicio}</NavLink></li>
+                    <li><NavLink to="/catalogo" className="lnav">{catalogo}</NavLink></li>
+                    <li><NavLink to="/cart" className="iconCardWidget">
                         <CardWidget/>
-                        </a></li>
+                        </NavLink></li>
 
                 </ul>
             </nav>

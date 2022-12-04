@@ -4,7 +4,7 @@ import './styles.css';
 const Home = () => {
     return (
         <div className="home">
-            <img src="http://cdn-west.sqhk.co/dcwv/2017/1/hhidFzB/HomeLogo_Grey.png" alt="home"/>
+            <h1 className="RocioE">ROCIO ESTETICA</h1>
         </div>
     )
 }

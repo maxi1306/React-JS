@@ -1,20 +1,23 @@
-import React from "react"
+import React, { useEffect, useState } from "react";
 import ItemDetail from "./ItemDetail"
-import { useEffect, useState } from "react"
+import { getFirestore, doc, getDoc } from "firebase/firestore"
+import { useParams } from "react-router-dom";
+
 
 const ItemDetailContainer = () => {
-    const [productDetail, setProduct] = useState([])
+    const [data, setData] = useState([]);
+    const { detalleId } = useParams();
+  
 
     useEffect(() => {
-        fetch("https://636593c5046eddf1baf001f8.mockapi.io/productos")
-          .then((res) => res.json())
-          .then(json => setProduct(json))
-          .catch((err) => console.log(err));
-      }, []);
-    
-    
-    return(
-        <ItemDetail item={productDetail}></ItemDetail>
+        const querydb = getFirestore();
+        const queryDoc = doc(querydb, "products", detalleId);
+        getDoc(queryDoc)
+            .then(res => setData({ id: res.id, ...res.data() }))
+    }, [detalleId])
+
+    return (
+        <ItemDetail data={data}></ItemDetail>
     )
 }
 

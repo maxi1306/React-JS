@@ -1,12 +1,8 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom'
 
-const Item = ({ item }) => {
+const Item = ({item, goToDetail}) => {
   const { id, image, model } = item;
-  const navigate = useNavigate();
-  const handleDetail = () => {
-    navigate(`/itemDetalles/${id}`, { state: item });
-  }
+  
 
 
   return (
@@ -15,7 +11,7 @@ const Item = ({ item }) => {
         <img src={image} alt="imageProduct" className="image" />
       </div>
       <h2 className='title'>{model}</h2>
-      <button className="buttomDetail" onClick={handleDetail}>VER MAS DETALLES</button>
+      <button className="buttomDetail" onClick={() => goToDetail(item)}>VER MAS DETALLES</button>
     </div>
   )
 };
